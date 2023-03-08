@@ -20,6 +20,7 @@ if (file_exists($config_database_name) == false) { // Check to see if the databa
     $config["auto_refresh"] = "server"; // This determines whether displays will automatically refresh.
     $config["theme"] = "light"; // This determines the supplmentary CSS file that will be used across the interface.
     $config["exec_user"] = "predator"; // This is the user on the system that will be used to control executables.
+    $config["preview_display"] = false; // This determines whether or not the image preview display will be enabled on the main dashboard.
 
     fwrite($configuration_database_file, serialize($config)); // Set the contents of the database file to the placeholder configuration.
     fclose($configuration_database_file); // Close the database file.

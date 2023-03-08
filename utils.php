@@ -50,6 +50,9 @@ function verify_permissions($config) {
     if (is_writable($instance_configuration_file) == false) { // Check to see if the instance configuration file is writable.
         echo "<p class\"error\">The instance configuration isn't writable. Please verify that the instance configuration file at " . $instance_configuration_file . " has the correct permissions to be modified by external programs.</p>";
     }
+    if (!json_decode(file_get_contents($instance_configuration_file))) {
+        echo "<p class\"error\">The instance configuration doesn't appear to be valid JSON. Please verify that the instance configuration file at " . $instance_configuration_file . " is valid.</p>";
+    }
 
     if (is_writable("./") == false) { // Check to se if the controller interface's root directory is writable.
         echo "<p>The controller interface's root directory is not writable. Please verify the permissions of the " . getcwd() . " directory.</p>";

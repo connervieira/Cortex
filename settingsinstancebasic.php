@@ -73,8 +73,10 @@ include "./utils.php";
             $input_values["alpr"]["confidence"] = $_POST["alpr>confidence"];
 
 
-            $input_values["network"]["target"] = $_POST["network>target"];
             $input_values["network"]["identifier"] = $_POST["network>identifier"];
+            $input_values["network"]["results_submission"]["target"] = $_POST["network>results_submission>target"];
+            $input_values["network"]["remote_processing"]["target"] = $_POST["network>remote_processing>target"];
+            $input_values["network"]["remote_processing"]["mode"] = $_POST["network>remote_processing>mode"];
 
 
 
@@ -121,8 +123,10 @@ include "./utils.php";
 
 
 
-                if (filter_var($input_values["network"]["target"], FILTER_VALIDATE_URL) == false) { echo "<p class='error'>The <b>network>target</b> value is not a URL.</p>"; $valid = false; } // Validate that the network>target value is a URL.
                 if (strlen($input_values["network"]["identifier"]) > 100) { echo "<p class='error'>The <b>network>identifier</b> value is longer than expected.</p>"; $valid = false; } // Validate that the network>identifier value is a reasonable length.
+                if (filter_var($input_values["network"]["results_submission"]["target"], FILTER_VALIDATE_URL) == false) { echo "<p class='error'>The <b>network>results_submission>target</b> value is not a URL.</p>"; $valid = false; } // Validate that the network>results_submission>target value is a URL.
+                if (filter_var($input_values["network"]["remote_processing"]["target"], FILTER_VALIDATE_URL) == false) { echo "<p class='error'>The <b>network>remote_processing>target</b> value is not a URL.</p>"; $valid = false; } // Validate that the network>remote_processing>target value is a URL.
+                if ($input_values["network"]["remote_processing"]["mode"] !== "on" and $input_values["network"]["remote_processing"]["mode"] !== "auto" and $input_values["network"]["remote_processing"]["mode"] !== "off") { echo "<p class='error'>The <b>network>remote_processing>mode</b> value is not a recognized option.</p>"; $valid = false; }
 
 
 
@@ -154,8 +158,10 @@ include "./utils.php";
                     $instance_config["alpr"]["confidence"] = $input_values["alpr"]["confidence"];
 
 
-                    $instance_config["network"]["target"] = $input_values["network"]["target"];
                     $instance_config["network"]["identifier"] = $input_values["network"]["identifier"];
+                    $instance_config["network"]["results_submission"]["target"] = $input_values["network"]["results_submission"]["target"];
+                    $instance_config["network"]["remote_processing"]["target"] = $input_values["network"]["remote_processing"]["target"];
+                    $instance_config["network"]["remote_processing"]["mode"] = $input_values["network"]["remote_processing"]["mode"];
 
 
                     if (json_encode($instance_config) == true) { // Verify that the data to be saved to the instance configuration file is valid.
@@ -234,8 +240,21 @@ include "./utils.php";
 
                 <div class="buffer">
                     <h3>Network</h3>
-                    <label for="network>target">Target:</label> <input type="url" id="network>target" name="network>target" placeholder="https://service.tld/receiver" value="<?php echo $instance_config["network"]["target"]; ?>"><br><br>
                     <label for="network>identifier">Identifier:</label> <input type="text" id="network>identifier" name="network>identifier" placeholder="abcdef123456789" value="<?php echo $instance_config["network"]["identifier"]; ?>"><br><br>
+                    <div class="buffer">
+                        <h4>Results Submission</h5>
+                        <label for="network>results_submission>target">Results Target:</label> <input type="url" id="network>results_submission>target" name="network>results_submission>target" placeholder="https://service.tld/receiver.php" value="<?php echo $instance_config["network"]["results_submission"]["target"]; ?>"><br><br>
+                    </div>
+                    <div class="buffer">
+                        <h4>Remote Processing</h5>
+                        <label for="network>remote_processing>target">Target:</label> <input type="url" id="network>remote_processing>target" name="network>remote_processing>target" placeholder="https://service.tld/image_handler.php" value="<?php echo $instance_config["network"]["remote_processing"]["target"]; ?>"><br><br>
+                        <label for="network>remote_processing>mode">Auto:</label>
+                        <select id="network>remote_processing>mode" name="network>remote_processing>mode">
+                            <option value="on" <?php if ($instance_config["network"]["remote_processing"]["mode"] == "on") { echo "selected"; } ?>>On</option>
+                            <option value="auto" <?php if ($instance_config["network"]["remote_processing"]["mode"] == "auto") { echo "selected"; } ?>>Auto</option>
+                            <option value="off" <?php if ($instance_config["network"]["remote_processing"]["mode"] == "off") { echo "selected"; } ?>>Off</option>
+                        </select><br><br>
+                    </div>
                 </div>
 
 

@@ -33,9 +33,17 @@ include "./utils.php";
 
         $action = $_GET["action"];
         if ($action == "start") {
+            if (!file_exists("./start.sh")) {
+                file_put_contents("./start.sh", ""); // Create the start script.
+            }
+            if (is_writable("./start.sh")) {
+                file_put_contents("./start.sh", "python3 " . $config["instance_directory"] . "/main.py &"); // Update the start script.
+            } else {
+                echo "<p class=\"error\">The start.sh script is not writable.</p>";
+            }
             if (file_exists("./start.sh")) { // Verify that the start script exists.
                 if (is_alive($config) == false) {
-                    $start_command = "sudo -u " . $config["exec_user"] . " ./start.sh"; // Prepare the command to start an instance.
+                    $start_command = "sudo -u " . $config["exec_user"] . " sh ./start.sh"; // Prepare the command to start an instance.
                     shell_exec($start_command . ' > /dev/null 2>&1 &'); // Start an instance.
                     header("Location: ."); // Reload the page to remove any arguments from the URL.
                 } else {
@@ -77,6 +85,16 @@ include "./utils.php";
                 <h3>Errors</h3>
                 <iframe id="errorsframe" title="Errors Frame" src="./errors.php"></iframe>
             </div>
+            <?php
+            if ($config["preview_display"] == true) { // Check to see if the preview display is enabled.
+                echo '
+                <div class="display">
+                    <h3>Preview</h3>
+                    <iframe id="previewframe" title="Preview Frame" src="./preview.php" height="700px"></iframe>
+                </div>
+                ';
+            }
+            ?>
         </main>
     </body>
     <?php
@@ -86,7 +104,11 @@ include "./utils.php";
             setInterval(() => {
                 document.getElementById('statusframe').contentWindow.location.reload(true);
                 document.getElementById('platesframe').contentWindow.location.reload(true);
-                document.getElementById('errorsframe').contentWindow.location.reload(true);
+                document.getElementById('errorsframe').contentWindow.location.reload(true);";
+                if ($config["preview_display"] == true) { // Check to see if the preview display is enabled.
+                    echo "document.getElementById('previewframe').contentWindow.location.reload(true);";
+                }
+            echo "
             }, 1000);
         </script>
         ";

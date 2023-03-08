@@ -64,6 +64,12 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
                 }
 
+                if ($_POST["preview_display"] == "on") {
+                    $config["preview_display"] = true;
+                } else {
+                    $config["preview_display"] = false;
+                }
+
 
 
                 if (is_dir($_POST["instance_directory"])) { // Make sure the root directory input is actually a directory.
@@ -79,6 +85,7 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
                     echo "<p class='error'>The specified interface directory does not exist.</p>";
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
                 }
+
 
 
 
@@ -110,6 +117,7 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
                     <option value="dark" <?php if ($config["theme"] == "dark") { echo "selected"; } ?>>Dark</option>
                     <option value="light" <?php if ($config["theme"] == "light") { echo "selected"; } ?>>Light</option>
                 </select><br><br>
+                <label for="preview_display">Preview Display:</label> <input type="checkbox" id="preview_display" name="preview_display" <?php if ($config["preview_display"] == true) { echo "checked"; } ?>>
 
                 <h3>Connection Settings</h3>
                 <label for="instance_directory">Instance Directory:</label> <input type="text" id="instance_directory" name="instance_directory" placeholder="/home/predator/PredatorFabric/" value="<?php echo $config["instance_directory"]; ?>"><br><br>
