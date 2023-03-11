@@ -72,6 +72,19 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
 
 
 
+
+                if (preg_match("/^[A-Za-z0-9]*$/", $_POST["exec_user"])) { // Check to see if all of the characters in the submitted execution user are alphanumeric.
+                    if (strlen($_POST["exec_user"]) <= 100) { // Check to make sure the submitted execution user is not an excessive length.
+                        $config["exec_user"] = $_POST["exec_user"]; // Save the submitted execution user to the configuration array.
+                    } else {
+                        echo "<p class='error'>The execution user can only be 100 characters or less.</p>";
+                        $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
+                    }
+                } else {
+                    echo "<p class='error'>The execution user can only contain alpha-numeric characters.</p>";
+                    $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
+                }
+
                 if (is_dir($_POST["instance_directory"])) { // Make sure the root directory input is actually a directory.
                     $config["instance_directory"] = $_POST["instance_directory"]; // Save the submitted root directory option to the configuration array.
                 } else {
@@ -120,6 +133,7 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
                 <label for="preview_display">Preview Display:</label> <input type="checkbox" id="preview_display" name="preview_display" <?php if ($config["preview_display"] == true) { echo "checked"; } ?>>
 
                 <h3>Connection Settings</h3>
+                <label for="exec_user">Execution User:</label> <input type="text" id="exec_user" name="exec_user" placeholder="Username" pattern="[a-zA-Z0-9]{1,100}" value="<?php echo $config["exec_user"]; ?>"><br><br>
                 <label for="instance_directory">Instance Directory:</label> <input type="text" id="instance_directory" name="instance_directory" placeholder="/home/predator/PredatorFabric/" value="<?php echo $config["instance_directory"]; ?>"><br><br>
                 <label for="interface_directory">Interface Directory:</label> <input type="text" id="interface_directory" name="interface_directory" placeholder="/home/predator/Instance/" value="<?php echo $config["interface_directory"]; ?>"><br><br>
 

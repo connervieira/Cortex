@@ -58,15 +58,7 @@ For Cortex to function properly, Apache and PHP must be granted administrative r
 1. Open the sudo configuration file with the command `visudo`
 2. Add the line `www-data ALL=(ALL) NOPASSWD: ALL`
 3. Save the document and exit.
-
-
-### Start Script
-
-The `start.sh` script, located in the root controller directory, is used to start Predator Fabric. This script needs to be modified to reflect the instance installation location.
-
-For example, if Predator is installed in the home directory of the 'example' user, the script might contain the following:
-
-`python3 /home/example/Predator/main.py &`
+4. You should also make sure that the `cortex` directory is writable to PHP.
 
 
 ### Connecting
