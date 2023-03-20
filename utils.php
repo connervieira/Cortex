@@ -42,6 +42,8 @@ function verify_permissions($config) {
 
     if (is_writable("./") == false) { // Check to se if the controller interface's root directory is writable.
         echo "<p class=\"error\">The controller interface's root directory is not writable. Please verify the permissions of the " . getcwd() . " directory.</p>";
+    } else if (is_writable("./start.sh") == false) { // Check to see if the controller interface's start script is writable.
+        echo "<p class=\"error\">The start.sh script in the " . getcwd() . " directory is not writable.</p>";
     }
 
     if (is_dir($config["instance_directory"]) == false) { // Check to see if the root Predator instance directory exists.

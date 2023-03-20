@@ -40,6 +40,7 @@ include "./utils.php";
                 file_put_contents("./start.sh", "python3 " . $config["instance_directory"] . "/main.py &"); // Update the start script.
             } else {
                 echo "<p class=\"error\">The start.sh script is not writable.</p>";
+                exit();
             }
             if (file_exists("./start.sh")) { // Verify that the start script exists.
                 if (is_alive($config) == false) {
