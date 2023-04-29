@@ -30,7 +30,13 @@ include "./utils.php";
         $instance_config = json_decode($raw_instance_configuration, true);
 
 
-        $image_file = $instance_config["developer"]["working_directory"] . "/" . $instance_config["image"]["camera"]["file_name"];
+        if (isset($instance_config["developer"]["working_directory"])) { // Check to see if the configuration layout reflects that the instance Predator Fabric.
+            $image_file = $instance_config["developer"]["working_directory"] . "/" . $instance_config["image"]["camera"]["file_name"];
+        } else if (isset($instance_config["general"]["working_directory"])) { // Check to see if the configuration layout reflects that the instance is vanilla Predator.
+            $image_file = $instance_config["general"]["working_directory"] . "/" . $instance_config["realtime"]["image"]["camera"]["file_name"] . ".jpg";
+        } else {
+            echo "<p class=\"error\">The image file could not be located given the instance configuration file.</p>";
+        }
 
         $image_data = fread(fopen($image_file, "r"), filesize($image_file));
 
