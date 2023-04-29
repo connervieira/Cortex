@@ -7,4 +7,4 @@ This document contains a list of all the changes for each version of Cortex.
 
 ### Initial Release
 
-- Basic functionality.
+- Completed basic functionality.

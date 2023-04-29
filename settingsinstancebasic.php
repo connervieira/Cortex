@@ -45,6 +45,12 @@ include "./utils.php";
             $instance_config = json_decode($raw_instance_configuration, true);
 
 
+            if (isset($instance_config["general"]) == false or isset($intance_config["image"]) == false or isset($instance_config["alpr"]) == false or isset($instance_config["network"]) == false) {
+                echo "<p class=\"error\">The instance configuration appears to be incomplete. This might happen if the connected instance is vanilla Predator, rather than Predator Fabric.</p>";
+                exit();
+            }
+
+
 
 
 
