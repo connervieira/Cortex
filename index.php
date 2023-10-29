@@ -21,11 +21,6 @@ include "./utils.php";
             <a class="button" role="button" href="./logout.php">Logout</a>
             <a class="button" role="button" href="./settings.php">Settings</a><br>
         </div>
-        <div class="navbar">
-            <img class="logo" src="./img/logodark.svg" alt="Logo">
-        </div>
-        <div class="logocontainer">
-        </div>
         <h1><?php echo $config["product_name"]; ?></h1>
         <h2>Dashboard</h2>
         <?php
