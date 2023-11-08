@@ -43,12 +43,16 @@ include "./authentication.php";
             $error_age = (time() - floatval($key)); // Get the age of the error, in seconds.
             if ($error_age < 0) { $error_age = 0.0; } // If the error's age is negative, the default to 0 to compensate for minor clock differences.
 
-            $message = date("Y-m-d H:i:s", $key) . " (" . number_format((round($error_age*100)/100), 2) . ") - " . $error; // Generate the message line for this error.
+            $message = date("Y-m-d H:i:s", $key) . " (" . number_format((round($error_age*100)/100), 2) . ") - " . $error["msg"]; // Generate the message line for this error.
 
 
             if ($error_age < 60 * 1) { // Check to see if this error is less than one minute old before adding it to the list of messages to display.
                 if ($error_age < 10) { // If the error is recent enough, display it in a prominent style.
-                    array_push($messages_to_display, "<p style='color:red;'>" . $message . "</p>");
+                    if ($error["type"] == "error") { // Check to see if this message is an error.
+                        array_push($messages_to_display, "<p style='color:red;'>" . $message . "</p>"); // Display the message in red colored font.
+                    } else if ($error["type"] == "warn") { // Check to see if this message is a warning.
+                        array_push($messages_to_display, "<p style='color:orange;'>" . $message . "</p>"); // Display the message in orange colored font.
+                    }
                 } else { // If the error isn't recent, display it in a subtle style.
                     array_push($messages_to_display, "<p style='color:#888888;'>" . $message . "</p>");
                 }
