@@ -5,7 +5,7 @@ A graphical control interface for Predator Fabric.
 
 ## Compatability
 
-While Cortex is primarily intended to function as a front end for Predator Fabric, it should alos work well with vanilla Predator. However, expect certain control features to not work properly while connected to vanilla Predator.
+While Cortex is primarily intended to function as a front end for Predator Fabric, it should also work well with vanilla Predator. However, expect certain control features to not work properly while connected to vanilla Predator.
 
 ## Description
 
@@ -20,7 +20,7 @@ First and foremost, Cortex is designed to be easy and user friendly. While it ha
 
 ### Interchangeable
 
-While a graphical interface is great for simplicity, there's often times that a command line is the more efficient way to do something. As such, Cortex doesn't lock out command line changes, and is capable of being used interchangeably with the command line.
+While a graphical interface is great for simplicity, there's often times that a command line is the more efficient way to do something. As such, Cortex doesn't lock out command line changes, and is capable of being used interchangeably with the command line interface.
 
 ### Compatible
 

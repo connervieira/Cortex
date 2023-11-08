@@ -17,3 +17,4 @@ This document contains a list of all the changes for each version of Cortex.
 - Reduced default heartbeat interval.
 - Updated image preview to support Predator version 9.0.
 - Updated error message display to support Predator version 10.0.
+- Added more resilient error checking.

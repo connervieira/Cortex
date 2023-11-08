@@ -43,9 +43,6 @@ include "./utils.php";
                 echo "<a class=\"button\" href=\"./settingsinterface.php\">Interface Settings</a>";
                 exit();
             }
-            if (is_writable($config["instance_directory"]) == false) { // Check to make sure the instance directory is writable.
-                echo "<p class='error'>The instance directory doesn't appear to be writable.</p>";
-            }
 
             if (file_exists($instance_configuration_file) == false) { // Check to see if the instance configuration file exists.
                 // Don't display an error yet, since it's possible the user has selected to restore a backup. This same check will be run again after the user inputs are processed.

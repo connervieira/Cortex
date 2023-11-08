@@ -37,7 +37,7 @@ include "./utils.php";
                 exit();
             }
             if (is_writable($instance_configuration_file) == false) {
-                echo "<p class='error'>The instance configuration isn't writable. Please verify that the instance configuration file has the correct permissions to be modified by external programs.</p>";
+                echo "<p class='error'>Please make sure the instance configuration file is writable to make configuration modifications.</p>";
                 exit();
             }
 
@@ -45,8 +45,14 @@ include "./utils.php";
             $instance_config = json_decode($raw_instance_configuration, true);
 
 
-            if (isset($instance_config["general"]) == false or isset($intance_config["image"]) == false or isset($instance_config["alpr"]) == false or isset($instance_config["network"]) == false) {
-                echo "<p class=\"error\">The instance configuration appears to be incomplete. This might happen if the connected instance is vanilla Predator, rather than Predator Fabric.</p>";
+
+            if (isset($instance_config["general"]) and isset($instance_config["image"]) and isset($instance_config["alpr"]) and isset($instance_config["network"])) { // If this statement is true, then the configuration is likely Predator Fabric.
+                // Do nothing, since this is the intended situation.
+            } else if (isset($instance_config["general"]) and isset($instance_config["management"]) and isset($instance_config["prerecorded"]) and isset($instance_config["realtime"]) and isset($instance_config["dashcam"]) and isset($instance_config["developer"])) { // If this statement is true, then the configuration is likely vanilla Predator.
+                echo "<p class=\"error\">The current Predator instance configuration files appears to be for vanilla Predator, not Predator Fabric. Cortex is only capable of configuring Predator Fabric using the configuration GUI. If you know what you are doing, you can use the <a href='./settingsinstanceadvanced.php'>advanced configuration interface</a> to directly modify the configuration file.</p>";
+                exit();
+            } else { // If neither of the statements above are true, then it is likely that the configuration file is corrupt.
+                echo "<p class=\"error\">The instance configuration appears to be incomplete. Please ensure that your Predator configuration file is valid.</p>";
                 exit();
             }
 
