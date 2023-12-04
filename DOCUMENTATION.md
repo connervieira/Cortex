@@ -44,7 +44,7 @@ There are a few dependencies that need to be installed for Cortex to function.
 
 ### Installation
 
-After the dependencies are installed, copy the Cortex directory from the source you received it from, to the root of the root of your web-server directory.
+After the dependencies are installed, copy the Cortex directory from the source you received it from, to the root of your web-server directory.
 
 For example: `cp ~/Downloads/Cortex /var/www/html/cortex`
 
@@ -97,11 +97,13 @@ The "Interface Settings" section contains settings relating to the graphical Cor
     - It's better to err on the side of too high, since values that are too low can lead to unexpected behavior, like multiple instances running at once.
 - The "Theme" setting determines the aesthetic theme that the web interface uses.
     - This setting is strictly visual, and doesn't influence functionality in any significant way.
+- The "Preview Display" setting determines whether or not Cortex will show a preview of the current image being processed by Predator.
 
 The "Connection Settings" section contains settings relating to the connection between Cortex and the Predator Fabric instance.
 
 - The "Instance Directory" setting should be used to specify the absolute directory path of the Predator Fabric instance directory.
 - The "Interface Directory" setting should be used to specify the absolute directory path of the Predator Fabric interface directory.
+- The "Image Stream" setting is an absolute file path the points to the image that will be show in the image preview, if enabled.
 
 
 ## Usage
