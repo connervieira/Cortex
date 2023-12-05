@@ -7,7 +7,7 @@ include "./authentication.php";
 
 
 // Verify the theme from the form input, and apply it now so that the newly selected theme is reflected by the theme that loads when the page is displayed. This process is repeated during the actual configuration validation process later.
-if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the theme input matches one of the expected options.
+if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the theme input matches one of the expected options.
     $config["theme"] = $_POST["theme"]; // Update the configuration array.
 }
 
@@ -57,7 +57,7 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
                 }
 
-                if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the theme input matches one of the expected options.
+                if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the theme input matches one of the expected options.
                     $config["theme"] = $_POST["theme"]; // Save the submitted theme option to the configuration array.
                 } else {
                     echo "<p class='error'>The theme option is not an expected option.</p>";
@@ -133,7 +133,6 @@ if ($_POST["theme"] == "brand" or $_POST["theme"] == "dark"  or $_POST["theme"] 
                 <label for="heartbeat_threshold">Heartbeat Threshold:</label> <input type="number" id="heartbeat_threshold" name="heartbeat_threshold" placeholder="5" min="1" max="20" value="<?php echo $config["heartbeat_threshold"]; ?>"> <span>seconds</span><br><br>
                 <label for="theme">Theme:</label>
                 <select id="theme" name="theme">
-                    <option value="brand" <?php if ($config["theme"] == "brand") { echo "selected"; } ?>>Brand</option>
                     <option value="dark" <?php if ($config["theme"] == "dark") { echo "selected"; } ?>>Dark</option>
                     <option value="light" <?php if ($config["theme"] == "light") { echo "selected"; } ?>>Light</option>
                 </select><br><br>
