@@ -4,7 +4,7 @@ $config_database_name = "./config.txt";
 
 
 if (is_writable(".") == false) {
-    echo "<p class=\"error\">The directory is not writable to PHP.</p>";
+    echo "<p class=\"error\">The controller's root directory (" . realpath(".") . ") is not writable to PHP.</p>";
     exit();
 }
 
@@ -27,10 +27,10 @@ if (file_exists($config_database_name) == false) { // Check to see if the databa
     fclose($configuration_database_file); // Close the database file.
 }
 
-if (file_exists($config_database_name) == true) { // Check to see if the item database file exists. The database should have been created in the previous step if it didn't already exists.
+if (file_exists($config_database_name) == true) { // Check to see if the item database file exists. The database should have been created in the previous step if it didn't already exist.
     $config = unserialize(file_get_contents($config_database_name)); // Load the database from the disk.
 } else {
-    echo "<p class=\"error\">The configuration database failed to load</p>"; // Inform the user that the database failed to load.
+    echo "<p class=\"error\">The configuration database failed to load due to an unknown problem.</p>"; // Inform the user that the database failed to load.
     exit(); // Terminate the script.
 }
 

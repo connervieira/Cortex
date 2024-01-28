@@ -18,3 +18,10 @@ December 5th, 2023
 - Updated image preview to support Predator version 9.0.
 - Updated error message display to support Predator version 10.0.
 - Added more resilient error checking.
+
+
+## Version 1.2
+
+*Release date to be determined*
+
+- Made error messages in `config.php` more descriptive.
