@@ -20,8 +20,10 @@ December 5th, 2023
 - Added more resilient error checking.
 
 
-## Version 1.2
+## Version 2.0
 
 *Release date to be determined*
 
 - Made error messages in `config.php` more descriptive.
+- Updated instance configuration system.
+    - Cortex can now configure both Predator Fabric and vanilla Predator.
