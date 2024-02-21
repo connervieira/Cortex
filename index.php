@@ -51,7 +51,7 @@ include "./utils.php";
                 echo "<p class=\"error\">The program could not be started.</p>";
             }
         } else if ($action == "stop") {
-            shell_exec("sudo killall python3"); // Kill all Python executables.
+            shell_exec("sudo killall python3; sudo killall alpr"); // Kill all Python and ALPR processes.
             header("Location: ."); // Reload the page to remove any arguments from the URL.
         }
         ?>
