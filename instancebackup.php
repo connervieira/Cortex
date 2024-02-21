@@ -29,7 +29,7 @@ include "./utils.php";
              // Load the instance configuration file from the disk.
 
             $instance_configuration_file = $config["instance_directory"] . "/config.json";
-            $backup_location = "./instancebackups";
+            $backup_location = "./instancebackups" . strval(determine_predator_variant());
 
 
             // Assume everything is set-up properly until a problem is found.

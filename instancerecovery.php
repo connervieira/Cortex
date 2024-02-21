@@ -17,7 +17,7 @@ include "./utils.php";
     </head>
     <body>
         <div class="navbar">
-            <a class="button" role="button" href="./settingsinstancebasic.php">Back</a>
+            <a class="button" role="button" href="./settings.php">Back</a>
         </div>
         <h1><?php echo $config["product_name"]; ?></h1>
         <h2>Instance Recovery</h2>
