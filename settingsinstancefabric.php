@@ -26,33 +26,10 @@ include "./utils.php";
             <?php
             verify_permissions($config);
 
-            $instance_configuration_file = $config["instance_directory"] . "/config.json";
+            $instance_config = load_instance_config();
 
-            if (is_dir($config["instance_directory"]) == false) { // Check to see if the instance directory exists.
-                echo "<p class='error'>The instance directory doesn't appear to exist. Please adjust the controller configuration.</p>";
-                exit();
-            }
-            if (file_exists($instance_configuration_file) == false) { // Check to see if the Predator configuration file exists.
-                echo "<p class='error'>The instance configuration couldn't be located. Please verify that the interface configuration points to the correct instance directory.</p>";
-                exit();
-            }
-            if (is_writable($instance_configuration_file) == false) {
-                echo "<p class='error'>Please make sure the instance configuration file is writable to make configuration modifications.</p>";
-                exit();
-            }
-
-            $raw_instance_configuration = file_get_contents($instance_configuration_file);
-            $instance_config = json_decode($raw_instance_configuration, true);
-
-
-
-            if (isset($instance_config["general"]) and isset($instance_config["image"]) and isset($instance_config["alpr"]) and isset($instance_config["network"])) { // If this statement is true, then the configuration is likely Predator Fabric.
-                // Do nothing, since this is the intended situation.
-            } else if (isset($instance_config["general"]) and isset($instance_config["management"]) and isset($instance_config["prerecorded"]) and isset($instance_config["realtime"]) and isset($instance_config["dashcam"]) and isset($instance_config["developer"])) { // If this statement is true, then the configuration is likely vanilla Predator.
-                echo "<p class=\"error\">The current Predator instance configuration files appears to be for vanilla Predator, not Predator Fabric. Cortex is only capable of configuring Predator Fabric using the configuration GUI. If you know what you are doing, you can use the <a href='./settingsinstanceadvanced.php'>advanced configuration interface</a> to directly modify the configuration file.</p>";
-                exit();
-            } else { // If neither of the statements above are true, then it is likely that the configuration file is corrupt.
-                echo "<p class=\"error\">The instance configuration appears to be incomplete. Please ensure that your Predator configuration file is valid.</p>";
+            if (determine_predator_variant() != "fabric") {
+                echo "<p class=\"error\">This page is only meant to configure Predator Fabric. If you know what you are doing, you can use the <a href='./settingsinstanceadvanced.php'>advanced configuration interface</a> to directly modify the configuration file.</p>";
                 exit();
             }
 

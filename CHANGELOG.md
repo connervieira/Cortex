@@ -20,11 +20,13 @@ December 5th, 2023
 - Added more resilient error checking.
 
 
-## Version 1.2
+## Version 2.0
 
 *Release date to be determined*
 
 - Made error messages in `config.php` more descriptive.
+- Updated instance configuration system.
+    - Cortex can now configure both Predator Fabric and vanilla Predator.
 - Reduced the height of the "control" display on the main dashboard.
 - Updated the `start.sh` script used to launch Predator to automatically start into the correct mode.
 - Removed the interface directory configuration option in favor of automatically detecting it from the connected Predator configuration file.

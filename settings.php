@@ -24,7 +24,14 @@ include "./utils.php";
         <h2>Settings</h2>
         <main>
             <a class="button" role="button" href="settingscontroller.php">Controller Settings</a>
-            <a class="button" role="button" href="settingsinstancebasic.php">Instance Settings</a>
+            <?php
+            $predator_variant_connected = determine_predator_variant($instance_config);
+            if ($predator_variant_connected == "fabric") {
+                echo '<a class="button" role="button" href="settingsinstancefabric.php">Instance Settings</a>';
+            } else if ($predator_variant_connected == "vanilla") {
+                echo '<a class="button" role="button" href="settingsinstancevanilla.php">Instance Settings</a>';
+            }
+            ?>
         </main>
     </body>
 </html>
