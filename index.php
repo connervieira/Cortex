@@ -32,7 +32,7 @@ include "./utils.php";
                 file_put_contents("./start.sh", ""); // Create the start script.
             }
             if (is_writable("./start.sh")) {
-                file_put_contents("./start.sh", "python3 " . $config["instance_directory"] . "/main.py &"); // Update the start script.
+                file_put_contents("./start.sh", "python3 " . $config["instance_directory"] . "/main.py 2 --headless &"); // Update the start script.
             } else {
                 echo "<p class=\"error\">The start.sh script is not writable.</p>";
                 exit();
@@ -71,7 +71,7 @@ include "./utils.php";
                 echo $stop_button;
                 ?>
                 <br><br>
-                <iframe id="statusframe" title="Status Frame" src="./status.php"></iframe>
+                <iframe id="statusframe" style="height:50px;" title="Status Frame" src="./status.php"></iframe>
             </div>
             <div class="display">
                 <h3>Plates</h3>

@@ -24,11 +24,6 @@ include "./utils.php";
 
         verify_permissions($config);
 
-        $instance_configuration_file = $config["instance_directory"] . "/config.json";
-
-        $raw_instance_configuration = file_get_contents($instance_configuration_file);
-        $instance_config = json_decode($raw_instance_configuration, true);
-
         $image_file = $config["image_stream"];
 
         if (file_exists($image_file) == true) { // Check to make sure the image file exists before displaying it.

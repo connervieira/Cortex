@@ -2,12 +2,18 @@
 include "./config.php";
 
 
+function load_instance_config($config) {
+    $instance_configuration_file = $config["instance_directory"] . "/config.json";
+    $instance_config = json_decode(file_get_contents($instance_configuration_file), true);
+    return $instance_config;
+}
 
 
 // The `is_alive` function checks to see if the linked instance is running, based on its heartbeat.
 function is_alive($config) {
-    $heartbeat_file_path = $config["interface_directory"] . "/heartbeat.json";
-    if (is_dir($config["interface_directory"]) == true) { // Check to make sure the specified interface directory exists.
+    $instance_config = load_instance_config($config);
+    $heartbeat_file_path = $instance_config["general"]["interface_directory"] . "/heartbeat.json";
+    if (is_dir($instance_config["general"]["interface_directory"]) == true) { // Check to make sure the specified interface directory exists.
         if (file_exists($heartbeat_file_path)) { // Check to see if the heartbeat file exists.
             $heartbeat_log = json_decode(file_get_contents($heartbeat_file_path), true); // Load the heartbeat file from JSON data.
         } else { // If the heartbeat file doesn't exist, then load a blank placeholder instead.
@@ -58,5 +64,6 @@ function verify_permissions($config) {
     }
 
 }
+
 
 ?>

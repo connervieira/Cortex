@@ -14,8 +14,7 @@ if (file_exists($config_database_name) == false) { // Check to see if the databa
 
     $config["interface_password"] = "predator";
     $config["product_name"] = "Cortex";
-    $config["instance_directory"] = "/home/predator/Software/PredatorFabric/instance"; // This defines where the Predator Fabric directory can be found.
-    $config["interface_directory"] = "/home/predator/Software/PredatorFabric/interface"; // This defines where Predator Fabric's interface directory can be found.
+    $config["instance_directory"] = "/home/pi/Software/PredatorFabric/instance"; // This defines where the Predator Fabric directory can be found.
     $config["image_stream"] = "/dev/shm/phantom-webcam.jpg"; // This defines where the images Cortex shows in the main interface can be found.
     $config["heartbeat_threshold"] = 5; // This is the number of seconds old the last heartbeat has to be before the system is considered to be offline.
     $config["auto_refresh"] = "server"; // This determines whether displays will automatically refresh.

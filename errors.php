@@ -1,5 +1,6 @@
 <?php
 include "./config.php";
+include "./utils.php";
 
 $force_login_redirect = true;
 include "./authentication.php";
@@ -19,16 +20,17 @@ include "./authentication.php";
     </head>
     <body class="inlinebody">
         <?php
-        $error_file_path = $config["interface_directory"] . "/errors.json";
+        $instance_config = load_instance_config($config);
+        $error_file_path = $instance_config["general"]["interface_directory"] . "/errors.json";
 
-        if (is_dir($config["interface_directory"]) == true) { // Check to make sure the specified interface directory exists.
+        if (is_dir($instance_config["general"]["interface_directory"]) == true) { // Check to make sure the specified interface directory exists.
             if (file_exists($error_file_path) == true) { // Check to see if the error file exists.
                 $error_log = json_decode(file_get_contents($error_file_path), true); // Load the error file from JSON data.
             } else { // If the error file doesn't exist, then load a blank placeholder instead.
                 $error_log = array(); // Set the error log to an empty array.
             }
         } else {
-            echo "<p>The specified interface directory does not exist.</p>";
+            echo "<p>The interface directory does yet exist.</p>";
             exit();
         }
 

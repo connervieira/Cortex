@@ -92,13 +92,6 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
                 }
 
-                if (is_dir($_POST["interface_directory"])) { // Make sure the interface directory input is actually a directory.
-                    $config["interface_directory"] = $_POST["interface_directory"]; // Save the submitted interface directory option to the configuration array.
-                } else {
-                    echo "<p class='error'>The specified interface directory does not exist.</p>";
-                    $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
-                }
-
                 if (file_exists(dirname($_POST["image_stream"]))) { // Make sure the image stream file specified points to a directory that exists.
                     $config["image_stream"] = $_POST["image_stream"]; // Save the submitted interface directory option to the configuration array.
                 } else {
@@ -141,7 +134,6 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
                 <h3>Connection Settings</h3>
                 <label for="exec_user">Execution User:</label> <input type="text" id="exec_user" name="exec_user" placeholder="Username" pattern="[a-zA-Z0-9]{1,100}" value="<?php echo $config["exec_user"]; ?>"><br><br>
                 <label for="instance_directory">Instance Directory:</label> <input type="text" id="instance_directory" name="instance_directory" placeholder="/home/predator/PredatorFabric/" value="<?php echo $config["instance_directory"]; ?>"><br><br>
-                <label for="interface_directory">Interface Directory:</label> <input type="text" id="interface_directory" name="interface_directory" placeholder="/home/predator/Instance/" value="<?php echo $config["interface_directory"]; ?>"><br><br>
                 <label for="image_stream">Image Stream:</label> <input type="text" id="image_stream" name="image_stream" placeholder="/dev/shm/phantom-webcam.jpg" value="<?php echo $config["image_stream"]; ?>"><br><br>
 
                 <br><br><input type="submit" class="button" value="Submit">

@@ -25,3 +25,6 @@ December 5th, 2023
 *Release date to be determined*
 
 - Made error messages in `config.php` more descriptive.
+- Reduced the height of the "control" display on the main dashboard.
+- Updated the `start.sh` script used to launch Predator to automatically start into the correct mode.
+- Removed the interface directory configuration option in favor of automatically detecting it from the connected Predator configuration file.
