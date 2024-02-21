@@ -7,25 +7,25 @@ This document exlains how to install, setup, and use Cortex.
 
 ### Terminology
 
-Cortex and Predator Fabric form a somewhat complex link, and it's important to understand a few terms before trying to install Cortex.
+Cortex and Predator form a somewhat complex link, and it's important to understand a few terms before trying to install Cortex.
 
-- The **instance** refers to the instance of Predator Fabric that is being controlled by Cortex.
-- The **controller** refers to Cortex, controlling a Predator Fabric instance.
+- The **instance** refers to the instance of Predator that is being controlled by Cortex.
+- The **controller** refers to Cortex, controlling a Predator instance.
 
-- The **interface directory** is a directory used by Predator Fabric to feed information that will be read by Cortex. Think of this directory as the bridge Predator Fabric uses to active share information as it operates.
-- The **instance directory** is the main Predator Fabric directory, containing all of the scripts and support files used by the back-end.
+- The **interface directory** is a directory used by Predator to feed information that will be read by Cortex. Think of this directory as the bridge Predator uses to active share information as it operates.
+- The **instance directory** is the main Predator directory, containing all of the scripts and support files used by the back-end.
 - The **controller directory** is the main Cortex directory, containing all of the scripts and support files used by the front-end controller interface.
 
 ### Security
 
-Cortex is primarily intended to be installed on a system dedicated to the usage of Predator Fabric. As such, the following instructions often involve granting permissions without regard for the security of other applications. If you plan to install Cortex on a system running multiple services, use caution when granting very relaxed permissions.
+Cortex is primarily intended to be installed on a system dedicated to the usage of Predator. As such, the following instructions often involve granting permissions without regard for the security of other applications. If you plan to install Cortex on a system running multiple services, use caution when granting very relaxed permissions.
 
 ### Methodology
 
-Cortex must be installed on the device hosting Predator Fabric, and it interacts with the instance in a few different ways.
+Cortex must be installed on the device hosting Predator, and it interacts with the instance in a few different ways.
 
-- **Fetching** information is done using the interface directory, as defined previously. Predator Fabric places information regarding the current states into this directory for other programs to read.
-- **Controlling** the instance is done directly, using a shell script. When the user commands Cortex to start or stop Predator Fabric, a shell script is executed accordingly.
+- **Fetching** information is done using the interface directory, as defined previously. Predator places information regarding the current states into this directory for other programs to read.
+- **Controlling** the instance is done directly, using a shell script. When the user commands Cortex to start or stop Predator, a shell script is executed accordingly.
 - **Configuring** the instance is done by directly modifying its configuration file.
 
 
@@ -86,7 +86,7 @@ The "Interface Settings" section contains settings relating to the graphical Cor
 
 - The "Password" setting specifies the password used to protect the web interface.
     - This password is not encrypted, nor does it protect the security of the physical device running Cortex.
-- The "Auto Refresh" setting determines how the main dashboard will automatically refresh with information from Predator Fabric.
+- The "Auto Refresh" setting determines how the main dashboard will automatically refresh with information from Predator.
     - The "Server" option will cause refreshes to be triggered at a regular interval by an automatic refresh tag attached to relevant pages on the server side.
     - The "Client" option will cause refreshes to be triggered at a regular interval by a client-side refresh script.
         - This option depends on JavaScript being supported and enabled by your browser.
@@ -99,10 +99,9 @@ The "Interface Settings" section contains settings relating to the graphical Cor
     - This setting is strictly visual, and doesn't influence functionality in any significant way.
 - The "Preview Display" setting determines whether or not Cortex will show a preview of the current image being processed by Predator.
 
-The "Connection Settings" section contains settings relating to the connection between Cortex and the Predator Fabric instance.
+The "Connection Settings" section contains settings relating to the connection between Cortex and the Predator instance.
 
-- The "Instance Directory" setting should be used to specify the absolute directory path of the Predator Fabric instance directory.
-- The "Interface Directory" setting should be used to specify the absolute directory path of the Predator Fabric interface directory.
+- The "Instance Directory" setting should be used to specify the absolute directory path of the Predator instance directory.
 - The "Image Stream" setting is an absolute file path the points to the image that will be show in the image preview, if enabled.
 
 
@@ -112,32 +111,32 @@ At this point, Cortex should be fully configured, and there shouldn't be any err
 
 ### Controlling
 
-Controlling the linked Predator Fabric instance is extremely simple. The steps below assume Predator Fabric is not already running.
+Controlling the linked Predator instance is extremely simple. The steps below assume Predator is not already running.
 
-1. On the main Cortex dashboard, click the "Start" button to start Predator Fabric.
+1. On the main Cortex dashboard, click the "Start" button to start Predator.
 2. If auto-refresh is enabled, you should see the heart-beat status update within a few seconds.
     - If auto-refresh is disabled, you should manually refresh the page after a few seconds instead.
     - Do not click the "Start" button multiple times rapidly, since this can cause multiple instances to be launched.
-3. Once Predator Fabric is running, you'll be able to see diagnostics regarding it's status, the plates that have been recently detected, and any errors that may have been reported by the instance.
+3. Once Predator is running, you'll be able to see diagnostics regarding it's status, the plates that have been recently detected, and any errors that may have been reported by the instance.
     - At this point, the web interface can be closed without stopping the instance.
 4. To stop the instance, simply press the "Stop" button on the main dashboard.
-    - This button will stop all Python processes, even if multiple instances of Predator Fabric were inadvertently launched.
+    - This button will stop all Python processes, even if multiple instances of Predator were inadvertently launched.
 
 ### Views
 
 The main dashboard has 3 separate views.
 
-- The "Control" view shows the time since the last heart-beat was issued by the Predator Fabric instance.
+- The "Control" view shows the time since the last heart-beat was issued by the Predator instance.
     - A heart-beat is issued at the end of each processing cycle, and is used to indicate to external programs, like Cortex, that the instance is alive.
 - The "Plates" view shows all license plates that last detected, if any.
     - License plates are displayed in a list, along with all of the available guesses and confidence levels.
 - The "Errors" view shows any errors reported by the instance.
-    - To clarify, errors shown here relate to the Predator Fabric instance itself, not Cortex.
+    - To clarify, errors shown here relate to the Predator instance itself, not Cortex.
 
 
 ## Management
 
-Cortex allows you to manage Predator Fabric administratively from the web interface.
+Cortex allows you to manage Predator administratively from the web interface.
 
 ### Configuration
 
@@ -147,7 +146,7 @@ Cortex has two separate methods for configuring the instance. Under normal circu
 2. Click the "Instance Settings" button on the settings page.
 3. Adjust settings as desired.
 
-The settings here correspond to settings in the instance configuration file. These values are described in the documentation for Predator Fabric.
+The settings here correspond to settings in the instance configuration file. These values are described in the documentation for Predator.
 
 ### Recovery
 

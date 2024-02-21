@@ -14,12 +14,12 @@ if (file_exists($config_database_name) == false) { // Check to see if the databa
 
     $config["interface_password"] = "predator";
     $config["product_name"] = "Cortex";
-    $config["instance_directory"] = "/home/pi/Software/PredatorFabric/instance"; // This defines where the Predator Fabric directory can be found.
+    $config["instance_directory"] = "/home/pi/Software/Predator/"; // This defines where the Predator directory can be found.
     $config["image_stream"] = "/dev/shm/phantom-webcam.jpg"; // This defines where the images Cortex shows in the main interface can be found.
     $config["heartbeat_threshold"] = 5; // This is the number of seconds old the last heartbeat has to be before the system is considered to be offline.
-    $config["auto_refresh"] = "server"; // This determines whether displays will automatically refresh.
+    $config["auto_refresh"] = "client"; // This determines whether displays will automatically refresh.
     $config["theme"] = "light"; // This determines the supplmentary CSS file that will be used across the interface.
-    $config["exec_user"] = "predator"; // This is the user on the system that will be used to control executables.
+    $config["exec_user"] = "pi"; // This is the user on the system that will be used to control executables.
     $config["preview_display"] = false; // This determines whether or not the image preview display will be enabled on the main dashboard.
 
     fwrite($configuration_database_file, serialize($config)); // Set the contents of the database file to the placeholder configuration.
