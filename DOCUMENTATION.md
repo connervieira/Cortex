@@ -101,6 +101,7 @@ The "Interface Settings" section contains settings relating to the graphical Cor
 
 The "Connection Settings" section contains settings relating to the connection between Cortex and the Predator instance.
 
+- The "Execution User" is the user account on the system that will be used to start Predator. If you've previously been using Predator from the command line, you can determine the user you've been executing Predator as by running the `whoami` command.
 - The "Instance Directory" setting should be used to specify the absolute directory path of the Predator instance directory.
 - The "Image Stream" setting is an absolute file path the points to the image that will be show in the image preview, if enabled.
 
