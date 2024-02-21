@@ -31,3 +31,4 @@ December 5th, 2023
 - Updated the `start.sh` script used to launch Predator to automatically start into the correct mode.
 - Removed the interface directory configuration option in favor of automatically detecting it from the connected Predator configuration file.
 - Cortex now kills ALPR processes when stopping Predator.
+- The instance recovery tools now support both Predator Fabric and vanilla Predator.
