@@ -93,7 +93,7 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
                 }
 
                 if (file_exists(dirname($_POST["image_stream"]))) { // Make sure the image stream file specified points to a directory that exists.
-                    $config["image_stream"] = $_POST["image_stream"]; // Save the submitted interface directory option to the configuration array.
+                    $config["image_stream"] = $_POST["image_stream"]; // Save the submitted image stream location to the configuration array.
                 } else {
                     echo "<p class='error'>The specified image stream directory does not exist.</p>";
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
