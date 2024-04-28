@@ -1,5 +1,7 @@
 p, li, span, noscript, h1, h2, h3, h4, h5, h6, label {
     font-family: LatoWebMedium;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 h1 { font-size: 3rem; }
@@ -45,6 +47,10 @@ a {
     padding: 10px;
     border-radius: 5px;
     border: none;
+    line-height: 40px;
+    font-size: inherit;
+    text-decoration: underline;
+    font-family: LatoWebBold;
 }
 
 .navbar {
@@ -53,7 +59,7 @@ a {
 }
 
 .display {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .logo {

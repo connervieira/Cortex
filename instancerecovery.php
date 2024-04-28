@@ -17,7 +17,7 @@ include "./utils.php";
     </head>
     <body>
         <div class="navbar">
-            <a class="button" role="button" href="./settings.php">Back</a>
+            <a class="button" role="button" href="./settingsinstancevanilla.php">Back</a>
         </div>
         <h1><?php echo $config["product_name"]; ?></h1>
         <h2>Instance Recovery</h2>
@@ -90,22 +90,22 @@ include "./utils.php";
 
             <br><br><h3>Configuration</h3>
             <p>This tool allow in-depth configuration changes to be made.</p>
-            <a class="button" role="button" href="./settingsinstanceadvanced.php">Advanced Configuration</a><br><br><br>
+            <a class="button" role="button" href="./settingsinstanceadvanced.php">Advanced Configuration</a><br>
 
             <br><br><h3>Diagnostics</h3>
             <p>These tools provide information about the state of the instance.</p>
-            <a class="button" role="button" href="?action=dump">Print Instance Configuration</a><br><br><br>
-            <a class="button" role="button" href="?action=lsinstance">Print Instance Directory</a><br><br><br>
-            <a class="button" role="button" href="?action=lsinterface">Print Interface Directory</a>
+            <a class="button" role="button" href="?action=dump">Print Instance Configuration</a><br>
+            <a class="button" role="button" href="?action=lsinstance">Print Instance Directory</a><br>
+            <a class="button" role="button" href="?action=lsinterface">Print Interface Directory</a><br>
 
-            <br><br><br><h3>Back-up</h3>
+            <br><br><h3>Back-up</h3>
             <p>These tools create, delete, view, and restore back-ups of the instance configuration.</p>
-            <a class="button" role="button" href="./instancebackup.php">Manage Back-ups</a>
+            <a class="button" role="button" href="./instancebackup.php">Manage Back-ups</a><br>
 
-            <br><br><br><h3>Rescue</h3>
+            <br><br><h3>Rescue</h3>
             <p>This tool rescues a severely corrupted instances by flashing a configuration file from a remote source.</p>
             <form method="POST">
-                <label for="flashsource">Source:</label> <input type="url" id="flashsource" name="flashsource" value=""><br><br>
+                <label for="flashsource">Source:</label> <input type="url" id="flashsource" name="flashsource" value=""><br>
                 <input type="submit" class="button" value="Flash">
             </form>
         </main>

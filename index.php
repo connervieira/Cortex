@@ -70,7 +70,7 @@ include "./utils.php";
                 echo $start_button;
                 echo $stop_button;
                 ?>
-                <br><br>
+                <br>
                 <iframe id="statusframe" style="height:50px;" title="Status Frame" src="./status.php"></iframe>
             </div>
             <div class="display">
