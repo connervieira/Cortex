@@ -48,6 +48,8 @@ function verify_permissions($config) {
         echo "<p class=\"error\">The start.sh script in the " . getcwd() . " directory is not writable.</p>";
     }
 
+    if (is_writable($instance_configuration_file) == false) { shell_exec("timeout 2 sudo -u " . $config["exec_user"] . " chmod 777 " . $instance_configuration_file); } // Attempt to correct permissions on the instance configuration file before running the permissions check.
+
     if (is_dir($config["instance_directory"]) == false) { // Check to see if the root Predator instance directory exists.
         echo "<p class=\"error\">The instance directory doesn't appear to exist. Please adjust the controller configuration.</p>";
         echo "<a class=\"button\" href=\"./settingscontroller.php\">Controller Settings</a>";
