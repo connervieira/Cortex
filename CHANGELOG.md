@@ -35,4 +35,4 @@ December 5th, 2023
 - Added advanced management tools.
     - Predator's real-time ALPR functionality can now be registered as a SystemD service from the Cortex interface.
     - Cortex now allows users to view the contents of files in the interface, instance, and working directories.
-
+    - Added tool to view and download the plate history log in various formats.

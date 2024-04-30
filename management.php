@@ -27,6 +27,7 @@ include "./utils.php";
         <main>
             <a class="button" role="button" href="service.php">Service</a><br>
             <a class="button" role="button" href="files.php">Files</a><br>
+            <a class="button" role="button" href="platehistoryview.php">Plates</a><br>
         </main>
     </body>
 </html>
