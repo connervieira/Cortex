@@ -44,7 +44,7 @@ include "./utils.php";
                             file_put_contents($instance_configuration_file, json_encode($remote_config, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)); // Save the downloaded configuration file to disk.
                             echo "<p>The configuration file from the remote source was successfully applied.</p>";
                         } else {
-                            echo "<p class='error'>The response provided by the remote flash source doesn't appear to have all of the basic configuration sections.</p>";
+                            echo "<p class='error'>The response provided by the remote flash source doesn't appear to have all of the basic configuration sections for Predator Fabric.</p>";
                         }
                     } else {
                         echo "<p class='error'>The response provided by the remote flash source doesn't appear to be valid JSON.</p>";
@@ -56,6 +56,7 @@ include "./utils.php";
 
             } else {
                 if ($_GET["action"] == "dump") {
+                    echo "<a class=\"button\" href=\"instancerecovery.php\">Back</a>";
                     echo "<div style=\"text-align:left\">";
                     echo "    <pre>" . file_get_contents($instance_configuration_file) . "</pre>";
                     if (json_decode(file_get_contents($instance_configuration_file))) {
@@ -66,6 +67,7 @@ include "./utils.php";
                     echo "    <a class=\"button\" role=\"button\" href=\"?\">Clear</a>";
                     echo "</div>";
                 } else if ($_GET["action"] == "lsinstance") {
+                    echo "<a class=\"button\" href=\"instancerecovery.php\">Back</a>";
                     $ls_output = shell_exec("ls -l -A " . $config["instance_directory"]); // Execute the 'ls' command and record its output.
                     $ls_output_array = explode("\n", $ls_output); // Convert the command output into an array, separated by line.
                     echo "<div style=\"text-align:left\">";
@@ -75,6 +77,7 @@ include "./utils.php";
                     echo "    <a class=\"button\" role=\"button\" href=\"?\">Clear</a>";
                     echo "</div>";
                 } else if ($_GET["action"] == "lsinterface") {
+                    echo "<a class=\"button\" href=\"instancerecovery.php\">Back</a>";
                     $ls_output = shell_exec("ls -l -A " . $config["interface_directory"]); // Execute the 'ls' command and record its output.
                     $ls_output_array = explode("\n", $ls_output); // Convert the command output into an array, separated by line.
                     echo "<div style=\"text-align:left\">";
@@ -103,7 +106,7 @@ include "./utils.php";
             <a class="button" role="button" href="./instancebackup.php">Manage Back-ups</a><br>
 
             <br><br><h3>Rescue</h3>
-            <p>This tool rescues a severely corrupted instances by flashing a configuration file from a remote source.</p>
+            <p>This tool rescues a severely corrupted instances by flashing a configuration file from a remote source. This will overwrite your existing configuration file.</p>
             <form method="POST">
                 <label for="flashsource">Source:</label> <input type="url" id="flashsource" name="flashsource" value=""><br>
                 <input type="submit" class="button" value="Flash">

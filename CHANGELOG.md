@@ -41,3 +41,6 @@ December 5th, 2023
 - Updated the vanilla instance configuration page.
     - Fixed a typo where the "Best Effort" toggle was titled simply "Enabled".
     - Added descriptions to several configuration options.
+- Updated the instance recovery page.
+    - Added a back button to several tool outputs in order to return to the main instance recovery page.
+    - Added a warning to the Rescue tool.
