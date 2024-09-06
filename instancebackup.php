@@ -78,7 +78,7 @@ include "./utils.php";
 
             if ($_POST["backup"] !== null) { // Check to see if the backup form was submitted.
                 $current_config_contents = file_get_contents($instance_configuration_file); // Load the raw contents of the current instance configuration file.
-                file_put_contents($backup_location . "/" . time() . ".json", $current_config_contents); // save the raw contents of the current instance configuration file to a back-up file, named after the current Unix time.
+                file_put_contents($backup_location . "/" . time() . ".json", $current_config_contents); // Save the raw contents of the current instance configuration file to a back-up file, named after the current Unix time.
             } else if ($_POST["view"] !== null) { // Check to see if the view form was submitted.
                 if (file_exists($backup_location . "/" . $_POST["id"]) == true) { // Check to see if the specified file exists.
                     echo "<div style=\"text-align:left\">";
