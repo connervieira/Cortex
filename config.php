@@ -21,6 +21,7 @@ if (file_exists($config_database_name) == false) { // Check to see if the databa
     $config["theme"] = "light"; // This determines the supplmentary CSS file that will be used across the interface.
     $config["exec_user"] = "pi"; // This is the user on the system that will be used to control executables.
     $config["preview_display"] = false; // This determines whether or not the image preview display will be enabled on the main dashboard.
+    $config["show_guesses"] = false; // This determines whether or not each plate guess will be shown in the interface.
 
     fwrite($configuration_database_file, serialize($config)); // Set the contents of the database file to the placeholder configuration.
     fclose($configuration_database_file); // Close the database file.

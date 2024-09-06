@@ -98,6 +98,7 @@ The "Interface Settings" section contains settings relating to the graphical Cor
 - The "Theme" setting determines the aesthetic theme that the web interface uses.
     - This setting is strictly visual, and doesn't influence functionality in any significant way.
 - The "Preview Display" setting determines whether or not Cortex will show a preview of the current image being processed by Predator.
+- The "Show Guesses" setting determines whether or not Cortex will show each guess associated with each plate it displays.
 
 The "Connection Settings" section contains settings relating to the connection between Cortex and the Predator instance.
 

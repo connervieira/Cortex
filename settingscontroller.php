@@ -69,6 +69,11 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
                 } else {
                     $config["preview_display"] = false;
                 }
+                if ($_POST["show_guesses"] == "on") {
+                    $config["show_guesses"] = true;
+                } else {
+                    $config["show_guesses"] = false;
+                }
 
 
 
@@ -123,15 +128,16 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
                     <option value="client" <?php if ($config["auto_refresh"] == "client") { echo "selected"; } ?>>Client</option>
                     <option value="off" <?php if ($config["auto_refresh"] == "off") { echo "selected"; } ?>>Off</option>
                 </select><br><br>
-                <label for="heartbeat_threshold">Heartbeat Threshold:</label> <input type="number" id="heartbeat_threshold" name="heartbeat_threshold" placeholder="5" min="1" max="20" value="<?php echo $config["heartbeat_threshold"]; ?>"> <span>seconds</span><br><br>
+                <label for="heartbeat_threshold" title="Determines how long Predator must not respond before being considered dead">Heartbeat Threshold:</label> <input type="number" id="heartbeat_threshold" name="heartbeat_threshold" placeholder="5" min="1" max="20" value="<?php echo $config["heartbeat_threshold"]; ?>"> <span>seconds</span><br><br>
                 <label for="theme">Theme:</label>
                 <select id="theme" name="theme">
                     <option value="dark" <?php if ($config["theme"] == "dark") { echo "selected"; } ?>>Dark</option>
                     <option value="light" <?php if ($config["theme"] == "light") { echo "selected"; } ?>>Light</option>
                 </select><br><br>
-                <label for="preview_display">Preview Display:</label> <input type="checkbox" id="preview_display" name="preview_display" <?php if ($config["preview_display"] == true) { echo "checked"; } ?>>
+                <label for="preview_display" title="Determines whether an image previewing what Predator sees will be shown">Preview Display:</label> <input type="checkbox" id="preview_display" name="preview_display" <?php if ($config["preview_display"] == true) { echo "checked"; } ?>><br><br>
+                <label for="show_guesses" title="Determines whether or not all guess for each plate will be shown">Show Guesses:</label> <input type="checkbox" id="show_guesses" name="show_guesses" <?php if ($config["show_guesses"] == true) { echo "checked"; } ?>>
 
-                <h3>Connection Settings</h3>
+                <br><br><h3>Connection Settings</h3>
                 <label for="exec_user">Execution User:</label> <input type="text" id="exec_user" name="exec_user" placeholder="Username" pattern="[a-zA-Z0-9]{1,100}" value="<?php echo $config["exec_user"]; ?>"><br><br>
                 <label for="instance_directory">Instance Directory:</label> <input type="text" id="instance_directory" name="instance_directory" placeholder="/home/predator/PredatorFabric/" value="<?php echo $config["instance_directory"]; ?>"><br><br>
                 <label for="image_stream">Image Stream:</label> <input type="text" id="image_stream" name="image_stream" placeholder="/dev/shm/phantom-webcam.jpg" value="<?php echo $config["image_stream"]; ?>"><br><br>
