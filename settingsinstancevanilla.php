@@ -159,28 +159,28 @@ include "./utils.php";
                 </div>
                 <div class="buffer">
                     <h3>GPS</h3>
-                    <label for="general>gps>enabled">Enabled: </label><input type="checkbox" id="general>gps>enabled" name="general>gps>enabled" <?php if ($instance_config["general"]["gps"]["enabled"] == true) { echo "checked"; } ?>><br><br>
-                    <label for="realtime>gps>alpr_location_tagging">Tagging: </label><input type="checkbox" id="realtime>gps>alpr_location_tagging" name="realtime>gps>alpr_location_tagging" <?php if ($instance_config["realtime"]["gps"]["alpr_location_tagging"] == true) { echo "checked"; } ?>>
+                    <label for="general>gps>enabled" title="Globally enables GPS functionality">Enabled: </label><input type="checkbox" id="general>gps>enabled" name="general>gps>enabled" <?php if ($instance_config["general"]["gps"]["enabled"] == true) { echo "checked"; } ?>><br><br>
+                    <label for="realtime>gps>alpr_location_tagging" title="Determines whether Predator will GPS tag ALPR results in the plate log file">Tagging: </label><input type="checkbox" id="realtime>gps>alpr_location_tagging" name="realtime>gps>alpr_location_tagging" <?php if ($instance_config["realtime"]["gps"]["alpr_location_tagging"] == true) { echo "checked"; } ?>>
                 </div>
                 <div class="buffer">
                     <h3>Analysis</h3>
                     <div class="buffer">
                         <h4>Object Recognition</h4>
-                        <label for="realtime>object_recognition>enabled">Enabled: </label><input type="checkbox" id="realtime>object_recognition>enabled" name="realtime>object_recognition>enabled" <?php if ($instance_config["realtime"]["object_recognition"]["enabled"] == true) { echo "checked"; } ?>><br><br>
-                        <label for="realtime>object_recognition>video_still_path">Video Still Path: </label><input type="text" id="realtime>object_recognition>video_still_path" name="realtime>object_recognition>video_still_path" value="<?php echo $instance_config["realtime"]["object_recognition"]["video_still_path"]; ?>">
+                        <label for="realtime>object_recognition>enabled" title="Enables object recognition in real-time mode.">Enabled: </label><input type="checkbox" id="realtime>object_recognition>enabled" name="realtime>object_recognition>enabled" <?php if ($instance_config["realtime"]["object_recognition"]["enabled"] == true) { echo "checked"; } ?>><br><br>
+                        <label for="realtime>object_recognition>video_still_path" title="Determines the file-path of the image that Predator will analyze for objects">Video Still Path: </label><input type="text" id="realtime>object_recognition>video_still_path" name="realtime>object_recognition>video_still_path" value="<?php echo $instance_config["realtime"]["object_recognition"]["video_still_path"]; ?>">
                     </div>
                     <div class="buffer">
                         <h4>License Plate Recognition</h4>
-                        <label for="general>alpr>engine">Engine:</label>
+                        <label for="general>alpr>engine" title="Determines the engine Predator is expecting when running ALPR">Engine:</label>
                         <select id="general>alpr>engine" name="general>alpr>engine">
                             <option value="phantom" <?php if ($instance_config["general"]["alpr"]["engine"] == "phantom") { echo "selected"; } ?>>Phantom ALPR</option>
                             <option value="openalpr" <?php if ($instance_config["general"]["alpr"]["engine"] == "openalpr") { echo "selected"; } ?>>OpenALPR</option>
                         </select><br><br>
                         <div class="buffer">
                             <h4>Validation</h4>
-                            <label for="general>alpr>validation>guesses">Guesses: </label><input class="compactinput" type="number" step="1" min="1" max="50" id="general>alpr>validation>guesses" name="general>alpr>validation>guesses" value="<?php echo $instance_config["general"]["alpr"]["validation"]["guesses"]; ?>"><br><br>
-                            <label for="general>alpr>validation>confidence">Confidence: </label><input class="compactinput" type="number" step="1" min="5" max="100" id="general>alpr>validation>confidence" name="general>alpr>validation>confidence" value="<?php echo $instance_config["general"]["alpr"]["validation"]["confidence"]; ?>"><br><br>
-                            <label for="general>alpr>validation>best_effort" title="Determines if Predator will accept the most likely guess if all guesses are considered invalid by the validaiton rules">Enabled: </label><input type="checkbox" id="general>alpr>validation>best_effort" name="general>alpr>validation>best_effort" <?php if ($instance_config["general"]["alpr"]["validation"]["best_effort"] == true) { echo "checked"; } ?>><br><br>
+                            <label for="general>alpr>validation>guesses" title="Determines the number of guesses the ALPR back-end will make for the contents of each individual plate">Guesses: </label><input class="compactinput" type="number" step="1" min="1" max="50" id="general>alpr>validation>guesses" name="general>alpr>validation>guesses" value="<?php echo $instance_config["general"]["alpr"]["validation"]["guesses"]; ?>"><br><br>
+                            <label for="general>alpr>validation>confidence" title="Determines the minimum needed confidence percentage to consider a plate guess valid.">Confidence: </label><input class="compactinput" type="number" step="1" min="5" max="100" id="general>alpr>validation>confidence" name="general>alpr>validation>confidence" value="<?php echo $instance_config["general"]["alpr"]["validation"]["confidence"]; ?>"><br><br>
+                            <label for="general>alpr>validation>best_effort" title="Determines if Predator will accept the most likely guess if all guesses are considered invalid by the validation rules">Best Effort: </label><input type="checkbox" id="general>alpr>validation>best_effort" name="general>alpr>validation>best_effort" <?php if ($instance_config["general"]["alpr"]["validation"]["best_effort"] == true) { echo "checked"; } ?>><br><br>
                         </div>
                     </div>
                 </div>

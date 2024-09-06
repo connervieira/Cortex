@@ -38,3 +38,6 @@ December 5th, 2023
     - Added tool to view and download the plate history log in various formats.
 - It is now possible to configure Cortext to not display each guess for each plate.
 - Cortex now displays plates involved in alerts with a red background.
+- Updated the vanilla instance configuration page.
+    - Fixed a typo where the "Best Effort" toggle was titled simply "Enabled".
+    - Added descriptions to several configuration options.
