@@ -29,6 +29,8 @@ include "./authentication.php";
             } else { // If the heartbeat file doesn't exist, then load a blank placeholder instead.
                 $heartbeat_log = array(); // Set the heartbeat log to an empty array.
             }
+        } else { // The interface directory does not exist.
+            $heartbeat_log = array(); // Set the heartbeat log to an empty array.
         }
 
         $last_heartbeat = time() - floatval(end($heartbeat_log)); // Calculate how many seconds ago the last heartbeat was.

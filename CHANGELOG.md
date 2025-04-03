@@ -48,3 +48,4 @@ This update adds support for vanilla Predator, and improves both the stability a
 - Updated the instance recovery page.
     - Added a back button to several tool outputs in order to return to the main instance recovery page.
     - Added a warning to the 'Rescue' tool.
+- Improved the reliability of heartbeat detection before the interface directory is created.
