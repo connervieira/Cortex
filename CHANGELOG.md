@@ -22,6 +22,10 @@ December 5th, 2023
 
 ## Version 2.0
 
+### Vanilla Predator Update
+
+This update adds support for vanilla Predator, and improves both the stability and usability of Cortex.
+
 *Release date to be determined*
 
 - Made error messages in `config.php` more descriptive.
@@ -43,4 +47,4 @@ December 5th, 2023
     - Added descriptions to several configuration options.
 - Updated the instance recovery page.
     - Added a back button to several tool outputs in order to return to the main instance recovery page.
-    - Added a warning to the Rescue tool.
+    - Added a warning to the 'Rescue' tool.

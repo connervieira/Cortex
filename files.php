@@ -47,7 +47,7 @@ include "./utils.php";
                         $full_file_path = $directory_path . "/" . $selected_file;
                         if (file_exists($full_file_path)) { // Check to see if the selected file exists.
                             $file_contents = file_get_contents($full_file_path);
-                            if (pathinfo($full_file_path, PATHINFO_EXTENSION) == "json") { // Check to see if this is a JSON file.
+                            if (strtolower(pathinfo($full_file_path, PATHINFO_EXTENSION)) == "json") { // Check to see if this is a JSON file.
                                 if ($_GET["format"] == "true") {
                                     $file_contents = json_encode(json_decode($file_contents), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
                                     echo '<a class="button" role="button" href="?dir=' . $selected_directory . '&file=' . $selected_file . '">Raw</a><br><br>';
@@ -71,7 +71,7 @@ include "./utils.php";
 
                         $files_to_show = array(); // This is a placeholder that will be populated with the files to display in the next step.
                         foreach ($directory_contents as $file) { // Iterate over each file in the directory.
-                            if (in_array(pathinfo($file, PATHINFO_EXTENSION), $allowed_extensions)) { // Check to see if this file's extension is in the list of allowed extensions.
+                            if (in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), $allowed_extensions)) { // Check to see if this file's extension is in the list of allowed extensions.
                                 echo "<p><a href='?dir=" . $selected_directory . "&file=" . $file . "'>" . $file . "</a></p>";
                             }
                         }

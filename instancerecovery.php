@@ -43,8 +43,9 @@ include "./utils.php";
                         if (array_key_exists("general", $remote_config) and array_key_exists("image", $remote_config) and array_key_exists("alpr", $remote_config) and array_key_exists("network", $remote_config) and array_key_exists("developer", $remote_config)) { // Check to make sure all of the main configuration sections exists in the response from the remote source.
                             file_put_contents($instance_configuration_file, json_encode($remote_config, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)); // Save the downloaded configuration file to disk.
                             echo "<p>The configuration file from the remote source was successfully applied.</p>";
+                        } else if (array_key_exists("general", $remote_config) and array_key_exists("management", $remote_config) and array_key_exists("prerecorded", $remote_config) and array_key_exists("realtime", $remote_config) and array_key_exists("dashcam", $remote_config)) { // Check to make sure all of the main configuration sections exists in the response from the remote source.
                         } else {
-                            echo "<p class='error'>The response provided by the remote flash source doesn't appear to have all of the basic configuration sections for Predator Fabric.</p>";
+                            echo "<p class='error'>The response provided by the remote flash source doesn't appear to have all of the basic configuration sections for Predator or Predator Fabric.</p>";
                         }
                     } else {
                         echo "<p class='error'>The response provided by the remote flash source doesn't appear to be valid JSON.</p>";
