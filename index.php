@@ -57,7 +57,6 @@ include "./utils.php";
         ?>
         <main>
             <div class="display">
-                <h3>Control</h3>
                 <?php
                 if (is_alive($config) == true) {
                     $start_button = '<a class="button" role="button" id="startbutton" style="color:#aaaaaa" role="button" href="#">Start</a>';
@@ -71,65 +70,60 @@ include "./utils.php";
                 echo $stop_button;
                 ?>
                 <br>
-                <iframe id="statusframe" style="height:50px;" title="Status Frame" src="./status.php"></iframe>
-            </div>
-            <div class="display">
-                <h3>Plates</h3>
-                <iframe id="platesframe" title="Plates Frame" src="./plates.php" height="200px"></iframe>
-            </div>
-            <div class="display">
-                <h3>Errors</h3>
-                <iframe id="errorsframe" title="Errors Frame" src="./errors.php"></iframe>
+                <p id="lastheartbeat">Last heartbeat: <span id="lastheartbeatdisplay">X</span> seconds</p>
+                <br>
+                <div id="platesview"></div>
             </div>
             <?php
             if ($config["preview_display"] == true) { // Check to see if the preview display is enabled.
                 echo '
                 <div class="display">
                     <h3>Preview</h3>
-                    <iframe id="previewframe" title="Preview Frame" src="./preview.php" height="700px"></iframe>
+                    <img id="videopreview">
                 </div>
                 ';
             }
             ?>
         </main>
     </body>
-    <?php
-    if ($config["auto_refresh"] == "client") {
-        echo "
-        <script>
-            setInterval(() => {
-                document.getElementById('statusframe').contentWindow.location.reload(true);
-                document.getElementById('platesframe').contentWindow.location.reload(true);
-                document.getElementById('errorsframe').contentWindow.location.reload(true);";
-                if ($config["preview_display"] == true) { // Check to see if the preview display is enabled.
-                    echo "document.getElementById('previewframe').contentWindow.location.reload(true);";
-                }
-            echo "
-            }, 1000);
-        </script>
-        ";
-    }
-    ?>
     <script>
         const fetch_info = async () => {
             console.log("Fetching instance status");
-            const response = await fetch('./jsrelay.php'); // Fetch the status information using the JavaScript relay page.
-            const result = await response.json(); // Parse the JSON data from the response.
+            const status_response = await fetch('./jsrelay.php'); // Fetch the status information using the JavaScript relay page.
+            const status_result = await status_response.json(); // Parse the JSON data from the response.
 
             // Update the control buttons based on the instance status.
-            if (result.is_alive) {
-                document.getElementById("startbutton").style.color = "#aaaaaa";
-                document.getElementById("startbutton").href = "#";
+            if (status_result.is_alive) {
+                document.getElementById("startbutton").style.color = "#ffffff";
+                document.getElementById("startbutton").href = "?action=restart";
+                document.getElementById("startbutton").innerHTML = "Restart";
                 document.getElementById("stopbutton").style.color = "#ffffff";
                 document.getElementById("stopbutton").href = "?action=stop";
             } else {
                 document.getElementById("startbutton").style.color = "#ffffff";
                 document.getElementById("startbutton").href = "?action=start";
+                document.getElementById("startbutton").innerHTML = "Start";
                 document.getElementById("stopbutton").style.color = "#aaaaaa";
-                document.getElementById("stopbutton").href = "#";
+                document.getElementById("stopbutton").href = "?action=stop";
+            }
+            document.getElementById("lastheartbeatdisplay").innerHTML = await status_result.last_heartbeat.toFixed(2);
+
+            const plates_response = await fetch('./plates.php'); // Fetch the status information using the JavaScript relay page.
+            if (status_result.is_alive) {
+                document.getElementById("lastheartbeat").style = "opacity:1;";
+                document.getElementById("platesview").innerHTML = await plates_response.text();
+            } else {
+                document.getElementById("lastheartbeat").style = "opacity:0.2;";
             }
         }
+        setInterval(() => { fetch_info(); }, <?php echo floatval($config["refresh_delay"]); ?>); // Execute the instance fetch script at a regular timed interval.
 
-        setInterval(() => { fetch_info(); }, 500); // Execute the instance fetch script every 500 milliseconds.
+        const update_preview = async () => {
+            const video_preview = await fetch('./preview.php'); // Fetch the status information using the JavaScript relay page.
+            document.getElementById("videopreview").src = await video_preview.text();
+        }
+        <?php if ($config["preview_display"] == true) { // Check to see if the preview display is enabled.
+        echo "setInterval(() => { update_preview(); }, 300);";
+        } ?>
     </script>
 </html>

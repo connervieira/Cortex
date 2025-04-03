@@ -14,6 +14,11 @@ b {
     font-family: LatoWebBold;
 }
 
+img {
+    width: 100%;
+    border-radius: 15px;
+}
+
 iframe {
 	width: 100%;
 	border-radius: 10px;

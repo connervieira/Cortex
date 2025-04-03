@@ -2,23 +2,28 @@
 include "./config.php";
 
 
-// The `is_alive` function checks to see if the linked instance is running, based on its heartbeat.
-function is_alive($config) {
+// This function returns the time since the most recent instance heartbeat:
+function last_heartbeat_age($config) {
     $instance_config = load_instance_config($config);
     $heartbeat_file_path = $instance_config["general"]["interface_directory"] . "/heartbeat.json";
     if (is_dir($instance_config["general"]["interface_directory"]) == true) { // Check to make sure the specified interface directory exists.
         if (file_exists($heartbeat_file_path)) { // Check to see if the heartbeat file exists.
             $heartbeat_log = json_decode(file_get_contents($heartbeat_file_path), true); // Load the heartbeat file from JSON data.
         } else { // If the heartbeat file doesn't exist, then load a blank placeholder instead.
-            $heartbeat_log = array(); // Set the heartbeat log to an empty array.
+            $heartbeat_log = array(0); // Set the heartbeat log to an empty array.
         }
     } else {
-        $heartbeat_log = array(); // Set the heartbeat log to an empty array.
+        $heartbeat_log = array(0); // Set the heartbeat log to an empty array.
     }
 
+    $last_heartbeat = microtime(true) - floatval(end($heartbeat_log)); // Calculate how many seconds ago the last heartbeat was.
 
-    $last_heartbeat = time() - floatval(end($heartbeat_log)); // Calculate how many seconds ago the last heartbeat was.
+    return $last_heartbeat;
+}
 
+// This function checks to see if the linked instance is running, based on its heartbeat:
+function is_alive($config) {
+    $last_heartbeat = last_heartbeat_age($config);
     if ($last_heartbeat < $config["heartbeat_threshold"]) { // Only consider the system online if it's last heartbeat was within a certain number of seconds ago.
         return true;
     } else { // If the last heartbeat exceeded the time to be considered online, display a message that the system is offline.
@@ -100,5 +105,13 @@ function determine_predator_variant() {
     } else { // If neither of the statements above are true, then it is likely that the configuration file is corrupt.
         echo "<p class=\"error\">The instance configuration appears to be incomplete. Please ensure that your Predator configuration file is valid.</p>";
     }
+}
+
+
+function image_to_base64($filepath) {
+    $type = pathinfo($filepath, PATHINFO_EXTENSION);
+    $data = file_get_contents($filepath);
+    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    return $base64;
 }
 ?>

@@ -86,11 +86,8 @@ The "Interface Settings" section contains settings relating to the graphical Cor
 
 - The "Password" setting specifies the password used to protect the web interface.
     - This password is not encrypted, nor does it protect the security of the physical device running Cortex.
-- The "Auto Refresh" setting determines how the main dashboard will automatically refresh with information from Predator.
-    - The "Server" option will cause refreshes to be triggered at a regular interval by an automatic refresh tag attached to relevant pages on the server side.
-    - The "Client" option will cause refreshes to be triggered at a regular interval by a client-side refresh script.
-        - This option depends on JavaScript being supported and enabled by your browser.
-    - The "Off" option disables the auto-refresh altogether.
+- The "Refresh Interval" determines the number of milliseconds between automatic interface refreshes.
+    - Lower values will reduce latency, but increase processor usage.
 - The "Heartbeat Threshold" setting determines how many seconds the instance needs to stop responding for before Cortex considers it to be inactive.
     - On slower devices, this value should be raised to prevent long processing times from causing Cortex to mistakenly believe the instance isn't running.
     - On faster devices, this value can be lowered to make the control interface more responsive.

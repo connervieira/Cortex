@@ -43,10 +43,10 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
                 }
 
-                if ($_POST["auto_refresh"] == "server" or $_POST["auto_refresh"] == "client" or $_POST["auto_refresh"] == "off") { // Make sure the auto-refresh input matches one of the expected options.
-                    $config["auto_refresh"] = $_POST["auto_refresh"]; // Save the submitted auto-refresh option to the configuration array.
+                if (floatval($_POST["refresh_delay"]) >= 10 and floatval($_POST["refresh_delay"]) <= 5000) { // Make sure the refresh delay is within the expected range.
+                    $config["auto_refresh"] = floatval($_POST["auto_refresh"]); // Save the submitted refresh delay to the configuration.
                 } else {
-                    echo "<p class='error'>The auto-refresh option is not an expected option.</p>";
+                    echo "<p class='error'>The refresh delay is outside of the expected range.</p>";
                     $valid = false; // Indicate that the configuration is not valid, and shouldn't be saved.
                 }
 
@@ -109,7 +109,7 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
 
                 if ($valid == true) { // Check to see if the entered configuration is completely valid.
                     if (is_writable($config_database_name)) { // Check to make sure the configuration file is writable.
-                        file_put_contents($config_database_name, serialize($config)); // Save the modified configuration to disk.
+                        file_put_contents($config_database_name, json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)); // Save the modified configuration to disk.
                         echo "<p>Successfully updated configuration.</p>";
                     } else {
                         echo "<p class='error'>The configuration file is not writable.</p>";
@@ -122,12 +122,7 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
             <form method="post">
                 <h3>Interface Settings</h3>
                 <label for="interface_password">Password:</label> <input type="text" id="interface_password" name="interface_password" placeholder="password" pattern="[a-zA-Z0-9]{0,100}" value="<?php echo $config["interface_password"]; ?>"><br><br>
-                <label for="auto_refresh">Auto Refresh:</label>
-                <select id="auto_refresh" name="auto_refresh">
-                    <option value="server" <?php if ($config["auto_refresh"] == "server") { echo "selected"; } ?>>Server</option>
-                    <option value="client" <?php if ($config["auto_refresh"] == "client") { echo "selected"; } ?>>Client</option>
-                    <option value="off" <?php if ($config["auto_refresh"] == "off") { echo "selected"; } ?>>Off</option>
-                </select><br><br>
+                <label for="refresh_delay" title="Determines how long the web interface waits between automatically refreshing the data">Refresh delay:</label> <input type="number" id="refresh_delay" name="refresh_delay" placeholder="500" min="10" max="5000" value="<?php echo $config["refresh_delay"]; ?>"> <span>milliseconds</span><br><br>
                 <label for="heartbeat_threshold" title="Determines how long Predator must not respond before being considered dead">Heartbeat Threshold:</label> <input type="number" id="heartbeat_threshold" name="heartbeat_threshold" placeholder="5" min="1" max="20" value="<?php echo $config["heartbeat_threshold"]; ?>"> <span>seconds</span><br><br>
                 <label for="theme">Theme:</label>
                 <select id="theme" name="theme">

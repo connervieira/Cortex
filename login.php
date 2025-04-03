@@ -26,7 +26,7 @@ include "./authentication.php";
                 $_SESSION['username'] = "admin";
 
                 echo "<p>Successfully logged in</p>";
-                echo "<a href='./index.php'>Continue</a>";
+                echo "<a href='./index.php' class=\"button\">Continue</a>";
                 exit();
             } else {
                 echo "<p class\"error\">Incorrect password</p>";

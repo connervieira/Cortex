@@ -49,3 +49,17 @@ April 3rd, 2025
     - Added a back button to several tool outputs in order to return to the main instance recovery page.
     - Added a warning to the 'Rescue' tool.
 - Improved the reliability of heartbeat detection before the interface directory is created.
+
+
+## Version 3.0
+
+### Interface Redesign Update
+
+- The "Continue" button shown after successfully logging in is now styled like other buttons.
+- Dramatically simplified the main dashboard.
+    - The status, plates, and errors section have been combined into a unified display.
+    - All updates are now handled client-side using JavaScript.
+        - The "Refresh Method" setting has been replaced with "Refresh Interval", which determines the length of time between automatic refreshes.
+    - The image stream preview now refreshes client-side using JavaScript to prevent flickering and decrease latency.
+    - The plates display now includes much more information, especially for alerts.
+    - The plates display now only shows each plate once in the case that they are detected repeatedly over the past few seconds.
