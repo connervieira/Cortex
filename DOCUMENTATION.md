@@ -167,7 +167,7 @@ There are four main sections on the recovery page.
 - The "Diagnostics" tools can display information regarding various aspects of the instance.
     - The "Print Instance Configuration" button will display the raw configuration file for the instance.
     - The "Print Instance Directory" button will display the contents of the instance directory.
-    - The "Print Interface Directory" button will display the contents of the inteface directory of the instance.
+    - The "Print Interface Directory" button will display the contents of the interface directory of the instance.
 - The "Back-up" tool manages back-ups of the instance configuration file.
     - The "List" section displays a list of all back-ups.
         - Entries in this list can be clicked to autofill them in the functions in the "Manage" section.

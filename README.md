@@ -1,19 +1,28 @@
 # Cortex
 
-A graphical control interface for Predator.
-
-
-## Compatability
-
-While Cortex was originally designed to work with Predator Fabric, it should also work well with vanilla Predator. However, certain advanced features may not be available when using vanilla Predator.
+A graphical control interface for Predator's license plate recognition capabilities
 
 
 ## Description
 
-Cortex is a a complete graphical interface capable of controlling all of Predator's (and Predator Fabric's) core functionality. As such, when Predator is paired with Cortex, the command line becomes unnecessary, and all configuration and system management can be done through a graphical interface. That being said, Cortex is capable of working in tandem with the command line, and each interface method can be used interchangeably without conflict.
+Cortex is a a complete graphical interface capable of controlling all of Predator's (and Predator Fabric's) core ALPR functionality. As such, when Predator is paired with Cortex, the command line becomes unnecessary, and all configuration and system management can be done through a graphical interface. That being said, Cortex is capable of working in tandem with the command line, and each interface method can be used interchangeably without conflict.
+
+Cortex allows the user to start, stop, and configure Predator over a local network, as well as view license plates detected in real-time. Cortex also makes it easy to offload license plate logs for use with other software, like [V0LT Premonition](https://v0lttech.com/premonition.php).
+
+## Compatability
+
+Cortex is compatible both with vanilla [Predator](https://v0lttech.com/predator.php), and [Predator Fabric](https://v0lttech.com/predatorfabric.php). The instance type is identified automatically using the configuration file.
 
 
 ## Features
+
+### Offline
+
+Although Cortex operates over a network, it doesn't require any kind of internet connection to function. This makes it easy to use Cortex on an offline LAN embedded in a vehicle.
+
+### Automatic
+
+Cortex makes it possible to automatically start and stop Predator when the system boots, which makes it an entirely hands-off system. In this case, Cortex can be used as a passive display when desired without having to manually start and stop Predator every time the car starts.
 
 ### Easy
 

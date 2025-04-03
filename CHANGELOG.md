@@ -26,7 +26,7 @@ December 5th, 2023
 
 This update adds support for vanilla Predator, and improves both the stability and usability of Cortex.
 
-*Release date to be determined*
+April 3rd, 2025
 
 - Made error messages in `config.php` more descriptive.
 - Updated instance configuration system.
