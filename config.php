@@ -1,6 +1,23 @@
 <?php
-
 $config_database_name = "./config.json";
+
+
+
+// This function attempts to return the primary Linux username on this system.
+function get_primary_user() {
+    $dirs = array_diff(scandir("/home/"), array('..', '.'));
+    if (sizeof($dirs) == 0) {
+        return "pi";
+    } else if (sizeof($dirs) > 0) {
+        if (in_array("pi", $dirs)) {
+            return "pi";
+        } else if (in_array("alpr", $dirs)) {
+            return "alpr";
+        } else {
+            return reset($dirs);
+        }
+    }
+}
 
 
 if (is_writable(".") == false) {
@@ -12,14 +29,16 @@ if (is_writable(".") == false) {
 if (file_exists($config_database_name) == false) { // Check to see if the database file doesn't exist.
     $configuration_database_file = fopen($config_database_name, "w") or die("Unable to create configuration database file."); // Create the file.
 
+    $primary_user = get_primary_user();
+
     $config["interface_password"] = "predator";
     $config["product_name"] = "Cortex";
-    $config["instance_directory"] = "/home/pi/Software/Predator/"; // This defines where the Predator directory can be found.
+    $config["instance_directory"] = "/home/" . $primary_user . "/Software/Predator/"; // This defines where the Predator directory can be found.
     $config["image_stream"] = "/dev/shm/phantom-webcam.jpg"; // This defines where the images Cortex shows in the main interface can be found.
     $config["refresh_delay"] = 125; // This determines how many milliseconds the interface will wait between refreshes.
     $config["heartbeat_threshold"] = 5; // This is the number of seconds old the last heartbeat has to be before the system is considered to be offline.
     $config["theme"] = "light"; // This determines the supplmentary CSS file that will be used across the interface.
-    $config["exec_user"] = "pi"; // This is the user on the system that will be used to control executables.
+    $config["exec_user"] = $primary_user; // This is the user on the system that will be used to control executables.
     $config["preview_display"] = false; // This determines whether or not the image preview display will be enabled on the main dashboard.
     $config["show_guesses"] = false; // This determines whether or not each plate guess will be shown in the interface.
 

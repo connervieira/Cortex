@@ -2,6 +2,8 @@
 include "./config.php";
 
 
+
+
 // This function returns the time since the most recent instance heartbeat:
 function last_heartbeat_age($config) {
     $instance_config = load_instance_config($config);
