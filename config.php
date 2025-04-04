@@ -4,17 +4,19 @@ $config_database_name = "./config.json";
 
 
 // This function attempts to return the primary Linux username on this system.
-function get_primary_user() {
-    $dirs = array_diff(scandir("/home/"), array('..', '.'));
-    if (sizeof($dirs) == 0) {
-        return "pi";
-    } else if (sizeof($dirs) > 0) {
-        if (in_array("pi", $dirs)) {
+if (function_exists("get_primary_user")) {
+    function get_primary_user() {
+        $dirs = array_diff(scandir("/home/"), array('..', '.'));
+        if (sizeof($dirs) == 0) {
             return "pi";
-        } else if (in_array("alpr", $dirs)) {
-            return "alpr";
-        } else {
-            return reset($dirs);
+        } else if (sizeof($dirs) > 0) {
+            if (in_array("pi", $dirs)) {
+                return "pi";
+            } else if (in_array("alpr", $dirs)) {
+                return "alpr";
+            } else {
+                return reset($dirs);
+            }
         }
     }
 }
