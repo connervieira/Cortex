@@ -28,9 +28,9 @@ include "./utils.php";
             <?php
             $predator_variant_connected = determine_predator_variant($instance_config);
             if ($predator_variant_connected == "fabric") {
-                echo '<a class="button" role="button" href="settingsinstancefabric.php">Instance Settings</a>';
+                echo '<a class="button" role="button" href="settingsinstancefabric.php">Instance&nbsp;Settings</a>';
             } else if ($predator_variant_connected == "vanilla") {
-                echo '<a class="button" role="button" href="settingsinstancevanilla.php">Instance Settings</a>';
+                echo '<a class="button" role="button" href="settingsinstancevanilla.php">Instance&nbsp;Settings</a>';
             }
             ?>
         </main>

@@ -84,13 +84,13 @@ include "./utils.php";
                 }
             ?>
             <a class="button" role="button" href="?action=create" title="Create a SystemD service file for Predator's real-time ALPR functionality.">Create</a>
-            <a class="button" role="button" href="?action=delete" title="Delete the Predator real-time ALPR SystemD service file.">Delete</a><br><br><br>
+            <a class="button" role="button" href="?action=delete" title="Delete the Predator real-time ALPR SystemD service file.">Delete</a><br><br>
             <a class="button" role="button" href="?action=enable" title="Enable the Predator real-time ALPR SystemD service so it starts at boot.">Enable</a>
-            <a class="button" role="button" href="?action=disable" title="Disable the Predator real-time ALPR SystemD service so it doesn't start at boot.">Disable</a><br><br><br>
+            <a class="button" role="button" href="?action=disable" title="Disable the Predator real-time ALPR SystemD service so it doesn't start at boot.">Disable</a><br><br>
             <a class="button" role="button" href="?action=start" title="Manually start the Predator real-time ALPR SystemD service.">Start</a>
-            <a class="button" role="button" href="?action=stop" title="Manually stop the Predator real-time ALPR SystemD service.">Stop</a><br><br><br>
+            <a class="button" role="button" href="?action=stop" title="Manually stop the Predator real-time ALPR SystemD service.">Stop</a><br><br>
             <a class="button" role="button" href="?action=log" title="View the logs for the Predator real-time ALPR SystemD service.">Logs</a>
-            <a class="button" role="button" href="?action=view" title="View the contents of the Predator real-time ALPR service file.">View</a><br><br><br>
+            <a class="button" role="button" href="?action=view" title="View the contents of the Predator real-time ALPR service file.">View</a>
         </main>
     </body>
 </html>

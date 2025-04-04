@@ -34,10 +34,10 @@ select, input {
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 1%;
+    padding-right: 1%;
     text-align: center;
 }
 
@@ -78,8 +78,8 @@ a {
     margin-bottom: 20px;
     padding-top: 10px;
     padding-bottom: 30px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     border-radius: 15px;
 }
 .compactinput {

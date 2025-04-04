@@ -55,6 +55,8 @@ April 3rd, 2025
 
 ### Interface Redesign Update
 
+*Release date to be determined*
+
 - The "Continue" button shown after successfully logging in is now styled like other buttons.
 - Dramatically simplified the main dashboard.
     - The status, plates, and errors section have been combined into a unified display.
@@ -63,3 +65,4 @@ April 3rd, 2025
     - The image stream preview now refreshes client-side using JavaScript to prevent flickering and decrease latency.
     - The plates display now includes much more information, especially for alerts.
     - The plates display now only shows each plate once in the case that they are detected repeatedly over the past few seconds.
+- Made the interface more dense for improved behavior on smaller displays.
