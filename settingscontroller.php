@@ -122,7 +122,7 @@ if ($_POST["theme"] == "dark"  or $_POST["theme"] == "light") { // Make sure the
             <form method="post">
                 <h3>Interface Settings</h3>
                 <label for="interface_password">Password:</label> <input type="text" id="interface_password" name="interface_password" placeholder="password" pattern="[a-zA-Z0-9]{0,100}" value="<?php echo $config["interface_password"]; ?>"><br><br>
-                <label for="refresh_delay" title="Determines how long the web interface waits between automatically refreshing the data">Refresh delay:</label> <input type="number" id="refresh_delay" name="refresh_delay" placeholder="500" min="10" max="5000" value="<?php echo $config["refresh_delay"]; ?>"> <span>milliseconds</span><br><br>
+                <label for="refresh_delay" title="Determines how long the web interface waits between automatically refreshing the data">Refresh Delay:</label> <input type="number" id="refresh_delay" name="refresh_delay" placeholder="500" min="75" max="5000" value="<?php echo $config["refresh_delay"]; ?>"> <span>milliseconds</span><br><br>
                 <label for="heartbeat_threshold" title="Determines how long Predator must not respond before being considered dead">Heartbeat Threshold:</label> <input type="number" id="heartbeat_threshold" name="heartbeat_threshold" placeholder="5" min="1" max="20" value="<?php echo $config["heartbeat_threshold"]; ?>"> <span>seconds</span><br><br>
                 <label for="theme">Theme:</label>
                 <select id="theme" name="theme">
