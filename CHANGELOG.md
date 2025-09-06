@@ -67,3 +67,4 @@ April 3rd, 2025
     - The plates display now only shows each plate once in the case that they are detected repeatedly over the past few seconds.
 - Made the interface more dense for improved behavior on smaller displays.
 - Added automatic user configuration for systems that only have one user.
+- The `start.sh` script is now generated automatically if it is missing.

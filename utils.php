@@ -2,6 +2,11 @@
 include "./config.php";
 
 
+if (!file_exists("./start.sh")) {
+    file_put_contents("./start.sh", ""); // Create the start script.
+}
+
+
 
 
 // This function returns the time since the most recent instance heartbeat:
